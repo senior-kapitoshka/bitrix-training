@@ -1,4 +1,4 @@
-Шаблон компонента news.list
+Шаблон компонента news.list.
 
-скриншот:
-![screenshot](https://github.com/senior-kapitoshka/bitrix-training/blob/task_1/task_1/screen.png)
+Cкриншот:
+<img src="[img/screenshot.png](https://github.com/senior-kapitoshka/bitrix-training/blob/task_1/task_1/screen.png)" width="400" alt="screenshot">
