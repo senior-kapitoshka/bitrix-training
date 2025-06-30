@@ -1,4 +1,4 @@
 Шаблон компонента news.list.
 
 Cкриншот:
-<img src="https://github.com/senior-kapitoshka/bitrix-training/blob/task_1/task_1/screen.png)" width="400" alt="screenshot">
+<img src="https://github.com/senior-kapitoshka/bitrix-training/blob/task_1/task_1/screen.png" width="400" alt="screenshot">
