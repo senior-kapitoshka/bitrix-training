@@ -1,10 +1,5 @@
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
 
-<pre><?php print_r($_POST); ?></pre>
-<?php if ($arResult["isFormErrors"] == "Y"): ?>
-    <pre><?php print_r($arResult["FORM_ERRORS"]); ?></pre>
-<?php endif; ?>
-
 
 <div class="contact-form">
     <div class="contact-form__head">
