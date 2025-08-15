@@ -6,7 +6,11 @@ use Bitrix\Main\Loader;
 
 class Iblock
 {
-    public function addLog()
+
+    private static $handlerDisallow = false;
+    private static $IBLOCK_CODE = 'LOG';
+
+    public static function addLog(&$arFields)
     {
         
         if (self::$handlerDisallow) return;
@@ -21,7 +25,7 @@ class Iblock
 
         if ($arFields["IBLOCK_ID"] == $IBLOCK_ID) return;
 
-        $arIBlock = CIBlock::GetByID($arFields["IBLOCK_ID"])->Fetch();
+        $arIBlock = \CIBlock::GetByID($arFields["IBLOCK_ID"])->Fetch();
         if (!$arIBlock) return;
 
         //какой раздел LOG 
@@ -40,8 +44,8 @@ class Iblock
         ];
 
         //проверка наличия элемента в LOG 
-        $element = new CIBlockElement;
-        $existingElement = CIBlockElement::GetList(
+        $element = new \CIBlockElement;
+        $existingElement = \CIBlockElement::GetList(
             [],
             ['IBLOCK_ID' => $IBLOCK_ID, 'NAME' => $arFields["ID"]],
             false,
@@ -68,6 +72,38 @@ class Iblock
         self::$handlerDisallow = false;
 
     }
+
+     /* Поиск ID инфоблока LOG*/
+     private static function findIBlockID($code)
+    {
+        $ib = \CIBlock::GetList([], ['CODE' => $code])->Fetch();
+        return $ib['ID'] ?? null;
+    }
+
+    private static function findOrCreateSection($iblockId, $name)
+    {
+        $res = \CIBlockSection::GetList([], ['IBLOCK_ID' => $iblockId, 'NAME' => $name])->Fetch();
+        if ($res) {
+            return $res['ID'];
+        }
+
+        $section = new \CIBlockSection();
+        $id = $section->Add([
+            'IBLOCK_ID' => $iblockId,
+            'NAME' => $name,
+            'ACTIVE' => 'Y',
+        ]);
+
+        return $id ?: null;
+    }
+
+
+    private static function generatePreviewText($arFields)
+    {
+        return "Добавлен элемент ID = {$arFields['ID']}, NAME={$arFields['NAME']}";
+    }
+
+
 
     function OnBeforeIBlockElementAddHandler(&$arFields)
     {
