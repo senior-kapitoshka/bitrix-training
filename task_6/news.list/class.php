@@ -5,7 +5,7 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\SystemException;
 use Bitrix\Iblock\ElementTable;
 
-class MySolidNewsListComponent extends CBitrixComponent
+class NewsListComponent extends CBitrixComponent
 {
 
     protected function checkModules(): void
@@ -112,3 +112,4 @@ class MySolidNewsListComponent extends CBitrixComponent
         }
     }
 }
+
