@@ -1,5 +1,4 @@
 <?php
-namespace My\Module;
 
 use Bitrix\Main\Localization\Loc;
 

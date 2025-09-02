@@ -108,7 +108,7 @@ class custom_cprop extends CModule
                 $event['EVENT'],
                 $this->MODULE_ID,
                 $classHandler,
-                $event['METHOD']
+                $event['TO_METHOD']
             );
         }
 
